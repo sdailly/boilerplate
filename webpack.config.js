@@ -6,7 +6,7 @@ module.exports = {
   // Where should the compiled file go?
   output: {
     // To the `dist` folder
-    path: '/dist',
+    path: __dirname+'/dist/',
     // With the filename `build.js` so it's dist/build.js
     filename: 'bundle.min.js',
     publicPath: "/assets/"
@@ -22,17 +22,10 @@ module.exports = {
         // don't transform node_modules folder (which don't need to be compiled)
         exclude: /node_modules/
       }
-    ]
+    ],
+    noParse: /\.min\.js/
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false,
-        },
-        output: {
-            comments: false,
-        },
-    }),
 		new webpack.ProvidePlugin({
 			// Automtically detect jQuery and $ as free var in modules
 			// and inject the jquery library
@@ -40,5 +33,15 @@ module.exports = {
 			jQuery: "jquery",
 			$: "jquery"
 		})
-	]
-}
+	],
+  eslint : {
+    configFile : '.eslintrc'
+  },
+  resolve: {
+    root: __dirname,
+    modulesDirectories: [
+      'node_modules'
+    ],
+    extensions: ['','.js']
+  }
+};

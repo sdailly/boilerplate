@@ -1,6 +1,6 @@
 let babel = {
   methods() {
-    alert('babeldsfdsf');
+    alert('Start project');
   }
 };
 

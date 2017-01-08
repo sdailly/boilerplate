@@ -14,9 +14,10 @@ module.exports = function(callback) {
 		publicPath: "/" + myConfig.output.publicPath,
 		stats: {
 			colors: true
-		}
+		},
+		watch: true
 	}).listen(path.server.port, path.server.host, function(err) {
 		if(err) throw new gutil.PluginError("webpack-dev-server", err);
-		gutil.log("[webpack-dev-server]", `http://${path.server.host}:${path.server.port}/index.html`);
+		gutil.log("[webpack-dev-server]", `http://${path.server.host}:${path.server.port}/webpack-dev-server/index.html`);
 	});
 }
